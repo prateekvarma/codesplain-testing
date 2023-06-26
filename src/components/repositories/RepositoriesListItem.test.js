@@ -17,9 +17,14 @@ function renderComponent() {
       <RepositoriesListItem repository={repository} />
     </MemoryRouter>
   );
+
+  return { repository };
 }
 
 test('shows a link to the github homepage for this repository', async () => {
-  renderComponent();
-  await screen.findByRole('img', { name: 'JavaScript' })
+  const { repository } = renderComponent();
+  await screen.findByRole('img', { name: 'JavaScript' });
+
+  const link = screen.getByRole('link', { name: /github repository/i });
+  expect(link).toHaveAttribute('href', repository.html_url);
 });
