@@ -7,6 +7,8 @@ function HomeRoute() {
   const { data: tsRepos } = useRepositories('stars:>10000 language:typescript');
   const { data: rustRepos } = useRepositories('stars:>10000 language:rust');
   const { data: goRepos } = useRepositories('stars:>10000 language:go');
+  const { data: goPython } = useRepositories('stars:>10000 language:python');
+  const { data: goJava } = useRepositories('stars:>10000 language:java');
 
   return (
     <div>
@@ -22,6 +24,8 @@ function HomeRoute() {
         />
         <RepositoriesTable label="Most Popular Rust" repositories={rustRepos} />
         <RepositoriesTable label="Most Popular Go" repositories={goRepos} />
+        <RepositoriesTable label="Most Popular Python" repositories={goPython} />
+        <RepositoriesTable label="Most Popular Java" repositories={goJava} />
       </div>
     </div>
   );
