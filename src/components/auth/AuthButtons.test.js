@@ -36,6 +36,10 @@ describe('When the user is not signed in', () => {
 
   test('when user is NOT signed in, sign out is not visible', async () => {
     await renderComponent();
+
+    const signOutButton = screen.queryByRole('link', { name: /sign out/i });
+
+    expect(signOutButton).not.toBeInTheDocument();
   });
 });
 
